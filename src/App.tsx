@@ -1,25 +1,43 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import GlobalStyle from './style/GlobalStyle';
-import SortableList from './components/SortableList';
-import SortableItem from './components/SortableItem';
+import DnDList from './components/DnDList';
+import DnDItem from './components/DnDItem';
 
-interface Items {
-  id: number | string;
-  value: string;
-}
 function App() {
-  const [items, setItems] = useState<Items[]>([
-    { id: 'aa', value: 'aa' },
-    { id: 'bb', value: 'bb' },
-    { id: 'cc', value: 'cc' },
-    { id: 'dd', value: 'dd' },
-    { id: 'ee', value: 'ee' },
-    { id: 'ff', value: 'ff' },
-    { id: 'gg', value: 'gg' },
-    { id: 'hh', value: 'hh' },
-    { id: 'ii', value: 'ii' },
-    { id: 'jj', value: 'jj' },
+  const [items, setItems] = useState<any>([
+    {
+      id: 'aa',
+      value: '123',
+    },
+    {
+      id: 'bb',
+      value: '456',
+    },
+    {
+      id: 'cc',
+      value: '789',
+    },
+    {
+      id: 'dd',
+      value: '101112',
+    },
+    {
+      id: 'ee',
+      value: '12312dawdaw',
+    },
+    {
+      id: 'ff',
+      value: 'httpawdawdHDw/900x900',
+    },
+    {
+      id: 'gg',
+      value: 'hawdawdawdlash.com/-vr0gMUM6Fk/900x900',
+    },
+    {
+      id: 'hh',
+      value: 'awdawd',
+    },
   ]);
 
   const onChange = (items: any) => {
@@ -29,15 +47,13 @@ function App() {
   return (
     <>
       <GlobalStyle />
-      <Wrapper>
-        <SortableList
-          items={items}
-          onChange={onChange}
-          renderItem={(item: Items) => (
-            <SortableItem id={item.id}>{item.value}</SortableItem>
-          )}
-        />
-      </Wrapper>
+      <DnDList
+        items={items}
+        onChange={onChange}
+        renderItem={(item: any) => (
+          <DnDItem key={item.id} id={item.id} value={item.value} />
+        )}
+      />
     </>
   );
 }
